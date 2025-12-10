@@ -6,4 +6,8 @@ export interface StarSystem {
   starType: 'amarilla' | 'roja' | 'azul';
   planets: Planet[];
   hasAsteroidField: boolean;
+  position: {
+    x: number;
+    y: number;
+  };
 }
