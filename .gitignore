@@ -1,4 +1,6 @@
 dist/
+node_modules/
 *.exe
 __pycache__/
 *.pyc
+.vite/
