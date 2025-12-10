@@ -30,6 +30,7 @@ function createSystem(name: string, planetNames: string[], ownerFaction?: string
     starType: randomFrom(['amarilla', 'roja', 'azul']),
     planets,
     hasAsteroidField: Math.random() > 0.5,
+    position: { x: 0, y: 0 },
   };
 }
 
@@ -57,6 +58,18 @@ export function generateUniverse(seed?: string): StarSystem[] {
   for (let i = 0; i < 3; i += 1) {
     systems.push(createSystem(`Procedural-${i + 1}`, [`PX-${i}A`, `PX-${i}B`]));
   }
+
+  const center = { x: 480, y: 270 };
+  const radius = 220;
+  systems.forEach((system, index) => {
+    const angle = (index / systems.length) * Math.PI * 2;
+    const jitterX = (Math.random() - 0.5) * 40;
+    const jitterY = (Math.random() - 0.5) * 40;
+    system.position = {
+      x: center.x + Math.cos(angle) * radius + jitterX,
+      y: center.y + Math.sin(angle) * radius + jitterY,
+    };
+  });
 
   return systems;
 }

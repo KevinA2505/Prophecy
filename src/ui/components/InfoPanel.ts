@@ -27,4 +27,8 @@ export class InfoPanel {
     this.container.add([label, value]);
     this.yOffset += 22;
   }
+
+  destroy(): void {
+    this.container.destroy(true);
+  }
 }
